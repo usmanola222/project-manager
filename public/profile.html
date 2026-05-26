@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile — TaskFlow</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <i class="ph ph-kanban"></i>
+      Task<span>Flow</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <i class="ph ph-squares-four"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="dashboard.html" class="nav-item">
+        <i class="ph ph-kanban"></i>
+        <span>My Projects</span>
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <i class="ph ph-user-circle"></i>
+        <span>My Profile</span>
+      </a>
+      <a href="dashboard.html" class="nav-item">
+        <i class="ph ph-bell"></i>
+        <span>Notifications</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-pill">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <p class="user-name" id="userName">Loading...</p>
+          <p class="user-role">Member</p>
+        </div>
+      </div>
+      <button class="btn-sidebar-logout" onclick="logoutUser()">
+        <i class="ph ph-sign-out"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="dashboard.html" class="back-link">
+          <i class="ph ph-arrow-left"></i> Back to Dashboard
+        </a>
+        <h1>My Profile</h1>
+        <p>Manage your account information</p>
+      </div>
+    </div>
+
+    <!-- PROFILE SECTION -->
+    <div class="profile-layout">
+
+      <!-- LEFT — USER CARD -->
+      <div class="profile-card">
+        <div class="profile-avatar-large" id="profileAvatarLarge">U</div>
+        <h2 class="profile-name" id="profileName">Loading...</h2>
+        <p class="profile-email" id="profileEmail">
+          <i class="ph ph-envelope"></i>
+          Loading...
+        </p>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <p class="profile-stat-value" id="statProjects">0</p>
+            <p class="profile-stat-label">Projects</p>
+          </div>
+          <div class="profile-stat">
+            <p class="profile-stat-value" id="statNotifs">0</p>
+            <p class="profile-stat-label">Notifications</p>
+          </div>
+        </div>
+        <button class="btn-logout-full" onclick="logoutUser()">
+          <i class="ph ph-sign-out"></i> Logout
+        </button>
+      </div>
+
+      <!-- RIGHT — DETAILS -->
+      <div class="profile-details">
+
+        <!-- ACCOUNT INFO -->
+        <div class="profile-section-card">
+          <div class="profile-section-header">
+            <h3><i class="ph ph-user"></i> Account Information</h3>
+          </div>
+          <div class="profile-info-grid">
+            <div class="profile-info-item">
+              <p class="info-label">Full Name</p>
+              <p class="info-value" id="infoName">—</p>
+            </div>
+            <div class="profile-info-item">
+              <p class="info-label">Email Address</p>
+              <p class="info-value" id="infoEmail">—</p>
+            </div>
+            <div class="profile-info-item">
+              <p class="info-label">Member Since</p>
+              <p class="info-value" id="infoJoined">—</p>
+            </div>
+            <div class="profile-info-item">
+              <p class="info-label">Account Status</p>
+              <p class="info-value">
+                <span class="status-active">
+                  <i class="ph ph-check-circle"></i> Active
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT NOTIFICATIONS -->
+        <div class="profile-section-card">
+          <div class="profile-section-header">
+            <h3><i class="ph ph-bell"></i> Recent Notifications</h3>
+            <button class="btn-text" onclick="markAllRead()">
+              Mark all read
+            </button>
+          </div>
+          <div id="profileNotifs">
+            <p class="loading-text">Loading...</p>
+          </div>
+        </div>
+
+        <!-- MY PROJECTS -->
+        <div class="profile-section-card">
+          <div class="profile-section-header">
+            <h3><i class="ph ph-kanban"></i> My Projects</h3>
+            <a href="dashboard.html" class="btn-text">View all</a>
+          </div>
+          <div id="profileProjects">
+            <p class="loading-text">Loading...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

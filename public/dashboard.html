@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — TaskFlow</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <i class="ph ph-kanban"></i>
+      Task<span>Flow</span>
+    </div>
+<nav class="sidebar-nav">
+  <a href="dashboard.html" class="nav-item active">
+    <i class="ph ph-squares-four"></i>
+    <span>Dashboard</span>
+  </a>
+  <a href="dashboard.html" class="nav-item">
+    <i class="ph ph-kanban"></i>
+    <span>My Projects</span>
+  </a>
+  <a href="profile.html" class="nav-item">
+    <i class="ph ph-user-circle"></i>
+    <span>My Profile</span>
+  </a>
+  <a href="dashboard.html" class="nav-item" onclick="toggleNotifications()">
+    <i class="ph ph-bell"></i>
+    <span>Notifications</span>
+    <span class="nav-badge" id="notifCount">0</span>
+  </a>
+</nav>
+    <div class="sidebar-footer">
+      <div class="user-pill" id="userPill">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <p class="user-name" id="userName">Loading...</p>
+          <p class="user-role">Member</p>
+        </div>
+      </div>
+      <button class="btn-sidebar-logout" onclick="logoutUser()">
+        <i class="ph ph-sign-out"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <h1>Dashboard</h1>
+        <p id="greetingText">Good morning!</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-notif" id="notifBtn" onclick="toggleNotifications()">
+          <i class="ph ph-bell"></i>
+          <span class="notif-dot" id="notifDot" style="display:none"></span>
+        </button>
+        <button class="btn-new-project" onclick="openProjectModal()">
+          <i class="ph ph-plus"></i>
+          New Project
+        </button>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS DROPDOWN -->
+    <div class="notif-dropdown" id="notifDropdown" style="display:none">
+      <div class="notif-header">
+        <h3>Notifications</h3>
+        <button onclick="markAllRead()">Mark all read</button>
+      </div>
+      <div class="notif-list" id="notifList">
+        <p class="notif-empty">No notifications</p>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue">
+          <i class="ph ph-kanban"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-value" id="statProjects">0</p>
+          <p class="stat-label">Total Projects</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <i class="ph ph-check-square"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-value" id="statTasks">0</p>
+          <p class="stat-label">Active Tasks</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple">
+          <i class="ph ph-users"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-value" id="statMembers">0</p>
+          <p class="stat-label">Team Members</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange">
+          <i class="ph ph-flag"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-value" id="statDone">0</p>
+          <p class="stat-label">Completed</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div class="section-header">
+      <h2>My Projects</h2>
+      <button class="btn-text" onclick="openProjectModal()">
+        <i class="ph ph-plus"></i> New Project
+      </button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <p class="loading-text">Loading projects...</p>
+    </div>
+
+  </div>
+
+  <!-- NEW PROJECT MODAL -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h2>New Project</h2>
+        <button class="modal-close" onclick="closeProjectModal()">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="alert" id="modalAlert"></div>
+      <div class="form-group">
+        <label>Project Name</label>
+        <div class="input-wrapper">
+          <i class="ph ph-kanban"></i>
+          <input type="text" id="projectName" placeholder="Enter project name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <div class="input-wrapper">
+          <i class="ph ph-article"></i>
+          <input type="text" id="projectDesc" placeholder="What is this project about?"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Project Color</label>
+        <div class="color-picker">
+          <div class="color-option active" style="background:#e94560" data-color="#e94560" onclick="selectColor(this)"></div>
+          <div class="color-option" style="background:#6366f1" data-color="#6366f1" onclick="selectColor(this)"></div>
+          <div class="color-option" style="background:#f59e0b" data-color="#f59e0b" onclick="selectColor(this)"></div>
+          <div class="color-option" style="background:#10b981" data-color="#10b981" onclick="selectColor(this)"></div>
+          <div class="color-option" style="background:#3b82f6" data-color="#3b82f6" onclick="selectColor(this)"></div>
+          <div class="color-option" style="background:#8b5cf6" data-color="#8b5cf6" onclick="selectColor(this)"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-auth" onclick="createProject()">
+          <i class="ph ph-plus"></i>
+          <span>Create Project</span>
+        </button>
+        <button class="btn-cancel" onclick="closeProjectModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

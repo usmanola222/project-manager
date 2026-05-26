@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Board — TaskFlow</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <i class="ph ph-kanban"></i>
+      Task<span>Flow</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <i class="ph ph-squares-four"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item active">
+        <i class="ph ph-kanban"></i>
+        <span>Board</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="ph ph-bell"></i>
+        <span>Notifications</span>
+        <span class="nav-badge" id="notifCount">0</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-pill">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <p class="user-name" id="userName">Loading...</p>
+          <p class="user-role">Member</p>
+        </div>
+      </div>
+      <button class="btn-sidebar-logout" onclick="logoutUser()">
+        <i class="ph ph-sign-out"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="dashboard.html" class="back-link">
+          <i class="ph ph-arrow-left"></i> Back
+        </a>
+        <h1 id="projectTitle">Loading...</h1>
+        <p id="projectDesc">...</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-member" onclick="openMemberModal()">
+          <i class="ph ph-user-plus"></i>
+          Add Member
+        </button>
+        <button class="btn-new-project" onclick="openTaskModal()">
+          <i class="ph ph-plus"></i>
+          Add Task
+        </button>
+      </div>
+    </div>
+
+    <!-- MEMBERS BAR -->
+    <div class="members-bar">
+      <div class="members-list" id="membersList"></div>
+      <div class="board-meta" id="boardMeta"></div>
+    </div>
+
+    <!-- BOARD -->
+    <div class="board" id="board">
+      <p class="loading-text">Loading board...</p>
+    </div>
+
+  </div>
+
+ <!-- TASK DETAIL MODAL -->
+<div class="modal-overlay" id="taskDetailModal">
+  <div class="modal-card modal-large">
+    <div class="modal-top">
+      <h2 id="detailTitle">Task Title</h2>
+      <button class="modal-close" onclick="closeTaskDetail()">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <div class="task-detail-body">
+
+      <!-- LEFT -->
+      <div class="task-detail-left">
+        <div class="detail-section">
+          <h4>Description</h4>
+          <p id="detailDesc" class="detail-desc-text">No description</p>
+        </div>
+        <div class="detail-section">
+          <h4>Labels</h4>
+          <div id="detailLabels" class="task-labels"></div>
+        </div>
+        <div class="detail-section">
+          <h4>
+            Comments
+            <span id="commentCount" style="color:var(--text-light);font-weight:400"></span>
+          </h4>
+          <div class="comments-list" id="commentsList"></div>
+          <div class="comment-input">
+            <div class="input-wrapper">
+              <i class="ph ph-chat-circle"></i>
+              <input type="text" id="commentInput" placeholder="Write a comment... (Enter to send)"/>
+            </div>
+            <button class="btn-comment" onclick="addComment()">
+              <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="task-detail-right">
+        <div class="detail-meta-item">
+          <p class="detail-meta-label">Priority</p>
+          <span id="detailPriority" class="priority-badge"></span>
+        </div>
+        <div class="detail-meta-item">
+          <p class="detail-meta-label">Move to Column</p>
+          <select id="detailColumn" class="status-select" onchange="moveTask()">
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Review">Review</option>
+            <option value="Done">Done</option>
+          </select>
+        </div>
+        <div class="detail-meta-item">
+          <p class="detail-meta-label">Due Date</p>
+          <p id="detailDueDate" class="detail-meta-value"></p>
+        </div>
+        <div class="detail-meta-item">
+          <p class="detail-meta-label">Created By</p>
+          <p id="detailCreatedBy" class="detail-meta-value"></p>
+        </div>
+        <div class="detail-meta-item">
+          <p class="detail-meta-label">Assignees</p>
+          <div id="detailAssignees"></div>
+          <button class="btn-assign-me" onclick="assignMember()">
+            <i class="ph ph-user-plus"></i> Assign myself
+          </button>
+        </div>
+        <button class="btn-delete-task" onclick="deleteCurrentTask()">
+          <i class="ph ph-trash"></i> Delete Task
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <script src="js/main.js"></script>
+  <script src="js/project.js"></script>
+</body>
+</html>

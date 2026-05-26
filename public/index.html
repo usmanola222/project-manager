@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow — Project Management Tool</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="landing-body">
+
+  <!-- NAVBAR -->
+  <nav class="landing-nav">
+    <div class="landing-logo">
+      <i class="ph ph-kanban"></i>
+      Task<span>Flow</span>
+    </div>
+    <div class="landing-nav-actions">
+      <a href="login.html" class="btn-nav-login">Login</a>
+      <a href="signup.html" class="btn-nav-signup">Get Started Free</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="landing-hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="ph ph-lightning"></i>
+        Real-time collaboration
+      </div>
+      <h1>Manage Projects<br/>Like a <span>Pro</span></h1>
+      <p>TaskFlow helps teams collaborate, track tasks and ship faster with beautiful Kanban boards and real-time updates.</p>
+      <div class="hero-actions">
+        <a href="signup.html" class="btn-hero-primary">
+          <i class="ph ph-rocket-launch"></i>
+          Start for Free
+        </a>
+        <a href="login.html" class="btn-hero-secondary">
+          Login to Dashboard
+          <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <p class="hero-stat-value">10K+</p>
+          <p class="hero-stat-label">Teams</p>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <p class="hero-stat-value">50K+</p>
+          <p class="hero-stat-label">Projects</p>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <p class="hero-stat-value">99%</p>
+          <p class="hero-stat-label">Satisfaction</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-board">
+        <div class="mini-column">
+          <div class="mini-col-header todo">To Do</div>
+          <div class="mini-card">
+            <span class="mini-priority high">high</span>
+            <p>Design landing page</p>
+          </div>
+          <div class="mini-card">
+            <span class="mini-priority medium">medium</span>
+            <p>Write API docs</p>
+          </div>
+        </div>
+        <div class="mini-column">
+          <div class="mini-col-header inprogress">In Progress</div>
+          <div class="mini-card active-card">
+            <span class="mini-priority urgent">urgent</span>
+            <p>Build auth system</p>
+            <div class="mini-progress">
+              <div class="mini-progress-bar" style="width:70%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mini-column">
+          <div class="mini-col-header done">Done</div>
+          <div class="mini-card done-card">
+            <span class="mini-priority low">low</span>
+            <p>Setup database</p>
+          </div>
+          <div class="mini-card done-card">
+            <span class="mini-priority medium">medium</span>
+            <p>Configure server</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-blob"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="landing-features">
+    <div class="features-header">
+      <h2>Everything your team needs</h2>
+      <p>All the tools to manage projects from start to finish</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">
+          <i class="ph ph-kanban"></i>
+        </div>
+        <h3>Kanban Boards</h3>
+        <p>Visual project boards with drag and drop task management.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon purple">
+          <i class="ph ph-lightning"></i>
+        </div>
+        <h3>Real-time Updates</h3>
+        <p>See changes instantly with WebSocket powered live sync.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">
+          <i class="ph ph-users"></i>
+        </div>
+        <h3>Team Collaboration</h3>
+        <p>Invite members, assign tasks and comment in real time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon orange">
+          <i class="ph ph-bell"></i>
+        </div>
+        <h3>Smart Notifications</h3>
+        <p>Stay updated with instant notifications for every action.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon red">
+          <i class="ph ph-flag"></i>
+        </div>
+        <h3>Priority Management</h3>
+        <p>Set task priorities and never miss a deadline again.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teal">
+          <i class="ph ph-shield-check"></i>
+        </div>
+        <h3>Secure Auth</h3>
+        <p>JWT authentication keeps your projects safe and private.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="landing-cta">
+    <div class="cta-content">
+      <h2>Ready to get started?</h2>
+      <p>Join thousands of teams already using TaskFlow</p>
+      <a href="signup.html" class="btn-hero-primary">
+        <i class="ph ph-rocket-launch"></i>
+        Create Free Account
+      </a>
+    </div>
+    <div class="cta-blob"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="landing-footer">
+    <div class="landing-logo">
+      <i class="ph ph-kanban"></i>
+      Task<span>Flow</span>
+    </div>
+    <p>Built by Usman Lawal — CodeAlpha Internship 2025</p>
+  </footer>
+
+</body>
+</html>

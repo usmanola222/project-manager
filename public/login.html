@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — TaskFlow</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="auth-logo">
+        <i class="ph ph-kanban"></i>
+        Task<span>Flow</span>
+      </div>
+      <div class="auth-left-content">
+        <h1>Manage projects<br/>like a pro</h1>
+        <p>Collaborate with your team, track tasks and ship faster with TaskFlow.</p>
+        <div class="auth-features">
+          <div class="auth-feature">
+            <i class="ph ph-check-circle"></i>
+            <span>Real-time collaboration</span>
+          </div>
+          <div class="auth-feature">
+            <i class="ph ph-check-circle"></i>
+            <span>Drag and drop boards</span>
+          </div>
+          <div class="auth-feature">
+            <i class="ph ph-check-circle"></i>
+            <span>Smart notifications</span>
+          </div>
+        </div>
+      </div>
+      <div class="auth-blob"></div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-right">
+      <div class="auth-form-wrapper">
+        <h2>Welcome back</h2>
+        <p class="auth-sub">Login to your TaskFlow account</p>
+
+        <div class="alert" id="alertBox"></div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrapper">
+            <i class="ph ph-envelope"></i>
+            <input type="email" id="email" placeholder="Enter your email"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <i class="ph ph-lock"></i>
+            <input type="password" id="password" placeholder="Enter your password"/>
+            <i class="ph ph-eye" id="togglePassword" style="cursor:pointer"></i>
+          </div>
+        </div>
+
+        <button class="btn-auth" id="loginBtn" onclick="loginUser()">
+          <span>Login</span>
+          <i class="ph ph-arrow-right"></i>
+        </button>
+
+        <p class="auth-switch">
+          Don't have an account?
+          <a href="signup.html">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
